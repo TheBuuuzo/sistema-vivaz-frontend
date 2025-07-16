@@ -6,7 +6,6 @@ import CotacaoDetalhes from "./pages/CotacaoDetalhes";
 import NovaCotacao from "./pages/NovaCotacao";
 import PrivateRoute from "./components/PrivateRoute";
 import CadastrarUsuario from "./pages/cadastro";
-import Usuarios from "./pages/usuarios";
 import RedefinirSenha from "./pages/redefinir-senha";
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
           <Route path="/cotacao/:cotacaoId" element={<CotacaoDetalhes />} />
           <Route path="/nova-cotacao" element={<NovaCotacao />} />
           <Route path="/cadastro" element={<CadastrarUsuario />} />
-          <Route path="/users" element={<Usuarios />} />
           <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         </Route>
 
