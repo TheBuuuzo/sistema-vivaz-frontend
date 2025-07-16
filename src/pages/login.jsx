@@ -43,7 +43,7 @@ const Login = () => {
   }
 
   try {
-    const response = await fetch(`${apiUrl}/redefinir-senha`, {
+    const response = await fetch(`${apiUrl}/esqueci-senha`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Login = () => {
       body: JSON.stringify({ email }),
     });
 
-    
+
     const data = await response.json();
 
     if (response.ok) {

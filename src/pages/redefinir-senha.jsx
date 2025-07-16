@@ -22,7 +22,7 @@ const RedefinirSenha = () => {
     }
 
     try {
-      const response = await fetchWithAuth(`/redefinir-senha`, {
+      const response = await fetch(`https://sistema-vivaz-backend.onrender.com/redefinir-senha`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
