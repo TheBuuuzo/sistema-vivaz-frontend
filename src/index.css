@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-padrao {
+    width: 180px;  /* Largura fixa */
+    height: 40px;  /* Altura fixa */
+    padding: 12px 16px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+  }
+  
+  .btn-primario {
+    background-color: #36B6BC;
+    color: white;
+  }
+  
+  .btn-primario:hover {
+    background-color: #2a9094;
+  }
+  
+  .btn-secundario {
+    background-color: #e90e0e;
+    color: white;
+  }
+  
+  .btn-secundario:hover {
+    background-color: #b41111;
+  }
+  
+  .btn-perigo {
+    background-color: #e3342f;
+    color: white;
+  }
+  
+  .btn-perigo:hover {
+    background-color: #cc1f1a;
+  }
+
+  .btn-reabrir {
+    background-color: #98055A;
+    color: white;
+  }
+  
+  .btn-reabrir:hover {
+    background-color: #d13d93;
+  }
+  
