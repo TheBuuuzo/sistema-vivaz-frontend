@@ -1,4 +1,4 @@
-const apiUrl = process.env.REACT_APP_API_URL || "https://sistema-vivaz-backend.onrender.com";
+const apiUrl = "https://sistema-vivaz-backend.onrender.com";
 
 export const login = async (email, senha) => {
   try {
