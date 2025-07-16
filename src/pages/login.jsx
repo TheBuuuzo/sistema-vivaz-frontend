@@ -43,7 +43,7 @@ const Login = () => {
   }
 
   try {
-    const response = await fetchWithAuth(`/esqueci-senha`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/esqueci-senha`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
