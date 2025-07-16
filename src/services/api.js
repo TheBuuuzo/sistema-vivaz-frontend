@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL || "https://sistema-vivaz-backend.onrender.com";
 
 console.log("🔍 API URL:", process.env.REACT_APP_API_URL);
 
