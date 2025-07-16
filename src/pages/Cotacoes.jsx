@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getCotações } from "../services/dashboardService";
 import { getUsuarioLogado } from "../services/authService";
 import { FaArrowLeft } from "react-icons/fa";
+import fetchWithAuth from "../services/api";
 
 const Cotacoes = () => {
   const [cotações, setCotações] = useState([]);
@@ -32,7 +33,7 @@ const Cotacoes = () => {
 
   const handleFinalizarCotacoes = async () => {
     try {
-      const response = await fetch("http://192.168.15.13:5000/finalizar_cotacoes", {
+      const response = await fetchWithAuth("/finalizar_cotacoes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

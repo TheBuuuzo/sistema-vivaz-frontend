@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.15.13:5000"; // Backend Flask rodando localmente
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const login = async (email, senha) => {
   try {

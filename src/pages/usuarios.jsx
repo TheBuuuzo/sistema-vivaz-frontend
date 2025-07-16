@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import fetchWithAuth from "../services/api";
 
 const Usuarios = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Usuarios = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://192.168.15.13:5000/users", {
+      const response = await fetchWithAuth("/users", {
         headers: { "Authorization": `Bearer ${token}` }
       });
       const data = await response.json();

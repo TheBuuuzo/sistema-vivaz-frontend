@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getUsuarioLogado } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import fetchWithAuth from "../services/api";
 
 const CadastrarUsuario = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -16,7 +17,7 @@ const CadastrarUsuario = () => {
 
   const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://192.168.15.13:5000/users", {
+    const response = await fetchWithAuth("/users", {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -32,7 +33,7 @@ const CadastrarUsuario = () => {
 
   const handleCadastrar = async () => {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://192.168.15.13:5000/cadastro", {
+    const response = await fetchWithAuth("/cadastro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +60,7 @@ const CadastrarUsuario = () => {
     if (!confirmar) return;
     const token = localStorage.getItem("token");
     try {
-        const response = await fetch(`http://192.168.15.13:5000/users/${id}`, {
+        const response = await fetchWithAuth(`/users/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
@@ -85,7 +86,7 @@ const CadastrarUsuario = () => {
     if (!novaSenha) return;
     const token = localStorage.getItem("token");
     try {
-        const response = await fetch(`http://192.168.15.13:5000/users/${id}/reset_senha`, {
+        const response = await fetchWithAuth(`/users/${id}/reset_senha`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

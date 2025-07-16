@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.15.13:5000"; // Backend rodando localmente
+const API_URL = process.env.REACT_APP_API_URL;
 import fetchWithAuth from "./api"; 
 
 // Puxar detalhes da cotação
@@ -55,7 +55,7 @@ export const getUsuarioLogado = () => {
 // Puxar informações das propostas
 export async function getPropostas(cotacaoId) {
   const token = localStorage.getItem("token");
-  const response = await fetch(`http://192.168.15.13:5000/propostas/${cotacaoId}`, {
+  const response = await fetchWithAuth(`/propostas/${cotacaoId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export async function getPropostas(cotacaoId) {
   export async function cadastrarCotacao(data) {
     const token = localStorage.getItem("token");
   
-    const response = await fetch("http://192.168.15.13:5000/cotacao", {
+    const response = await fetchWithAuth("/cotacao", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export async function getPropostas(cotacaoId) {
     const token = localStorage.getItem("token");
   
     try {
-      const response = await fetch(`http://192.168.15.13:5000/cotacao/${cotacaoId}`, {
+      const response = await fetchWithAuth(`/cotacao/${cotacaoId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +149,7 @@ export async function getPropostas(cotacaoId) {
 // Excluir proposta
 export const excluirProposta = async (propostaId) => {
   const token = localStorage.getItem("token");
-  const response = await fetch(`http://192.168.15.13:5000/propostas/${propostaId}`, {
+  const response = await fetchWithAuth(`/propostas/${propostaId}`, {
       method: "DELETE",
       headers: {
           "Authorization": `Bearer ${token}`
@@ -164,7 +164,7 @@ export const excluirProposta = async (propostaId) => {
 export const registrarVoto = async (votoData) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`http://192.168.15.13:5000/votacao`, {
+    const response = await fetchWithAuth(`/votacao`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -207,7 +207,7 @@ export const getVotacoes = async (cotacaoId) => {
 export const excluirVoto = async (votoId) => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch(`http://192.168.15.13:5000/votacao/${votoId}`, {
+    const response = await fetchWithAuth(`/votacao/${votoId}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -228,7 +228,7 @@ export const excluirVoto = async (votoId) => {
 // Finalizar cotas vencidas
 export const finalizarCotasVencidas = async () => {
   try {
-    const response = await fetchWithAuth("http://192.168.15.13:5000/finalizar_cotacoes", {
+    const response = await fetchWithAuth("/finalizar_cotacoes", {
       method: "POST",
     });
 
@@ -248,7 +248,7 @@ export const finalizarCotasVencidas = async () => {
 // Reabrir cotações
 export const reabrirCotacao = async (cotacaoId) => {
   try {
-    const response = await fetchWithAuth(`http://192.168.15.13:5000/reabrir_cotacao/${cotacaoId}`, {
+    const response = await fetchWithAuth(`/reabrir_cotacao/${cotacaoId}`, {
       method: "POST",
     });
 

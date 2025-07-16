@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const API = axios.create({
-  baseURL: "http://192.168.15.13:5000", // Backend Flask
+  baseURL: apiUrl, 
 });
 
 export const login = (data) => API.post("/login", data);

@@ -5,6 +5,7 @@ import { FaArrowLeft, FaTrash } from "react-icons/fa";
 import { getUsuarioLogado } from "../services/authService";
 import { excluirVoto } from "../services/dashboardService";
 import { reabrirCotacao } from "../services/dashboardService";
+import fetchWithAuth from "../services/api";
 
 const CotacaoDetalhes = () => {
   const { cotacaoId } = useParams();
@@ -54,7 +55,7 @@ const CotacaoDetalhes = () => {
         setJaVotou(usuarioJaVotou);
   
         // 🔹 Buscar detalhes da cotação, incluindo o prazo
-        const response = await fetch(`http://192.168.15.13:5000/cotacao/${cotacaoId}`, {
+        const response = await fetchWithAuth(`/cotacao/${cotacaoId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
