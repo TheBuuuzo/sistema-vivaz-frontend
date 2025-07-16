@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import fetchWithAuth from "../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const Login = () => {
   }
 
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/esqueci-senha`, {
+    const response = await fetchWithAuth(`/esqueci-senha`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
