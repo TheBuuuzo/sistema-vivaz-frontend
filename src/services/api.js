@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const API = axios.create({
   baseURL: apiUrl, 
@@ -15,7 +15,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     throw new Error("Token não encontrado. Faça login novamente.");
   }
 
-  return fetch(url, {
+  return fetch(`${apiUrl}${endpoint}`, {
     ...options,
     headers: {
       ...options.headers,
