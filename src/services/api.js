@@ -15,7 +15,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     throw new Error("Token não encontrado. Faça login novamente.");
   }
 
-  return fetch(`${apiUrl}${endpoint}`, {
+  return fetch(`${apiUrl}${url}`, {
     ...options,
     headers: {
       ...options.headers,
@@ -25,5 +25,4 @@ export const fetchWithAuth = async (url, options = {}) => {
   });
 };
 
-// Corrija a exportação aqui:
 export default fetchWithAuth;
