@@ -7,6 +7,7 @@ import NovaCotacao from "./pages/NovaCotacao";
 import PrivateRoute from "./components/PrivateRoute";
 import CadastrarUsuario from "./pages/cadastro";
 import Usuarios from "./pages/usuarios";
+import RedefinirSenha from "./pages/redefinir-senha";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/nova-cotacao" element={<NovaCotacao />} />
           <Route path="/cadastro" element={<CadastrarUsuario />} />
           <Route path="/users" element={<Usuarios />} />
+          <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         </Route>
 
         {/* Redirecionamento padrão */}

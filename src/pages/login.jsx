@@ -35,6 +35,35 @@ const Login = () => {
     }
   };
 
+  const handleEsqueciSenha = async () => {
+  if (!email) {
+    alert("Digite o e-mail para receber o link de redefinição.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/esqueci-senha`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(data.message || "E-mail enviado com sucesso!");
+    } else {
+      alert(data.message || "Erro ao enviar o e-mail.");
+    }
+
+  } catch (error) {
+    console.error("Erro ao enviar e-mail:", error);
+    alert("Erro de conexão com o servidor.");
+  }
+};
+
   return (
     <div className="flex h-screen items-center justify-center bg-[#36B6BC]">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg border-t-4 border-[#98055A]">
@@ -73,6 +102,13 @@ const Login = () => {
             className="w-full bg-[#98055A] text-white p-2 rounded hover:bg-[#7a0448] transition-all"
           >
             Entrar
+          </button>
+          <button
+            type="button"
+            className="text-sm text-blue-600 hover:underline mt-2"
+            onClick={handleEsqueciSenha}
+          >
+            Esqueci minha senha
           </button>
         </form>
       </div>
