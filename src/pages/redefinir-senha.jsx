@@ -15,7 +15,12 @@ const RedefinirSenha = () => {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const t = query.get("token");
-    setToken(t || "");
+    if (!t || t.length < 10) {
+      console.warn("Token inválido na URL:", t);
+      setErro("Link de redefinição inválido ou expirado.");
+    } else {
+      setToken(t.trim());
+    }
   }, [location.search]);
 
   const handleSubmit = async () => {
@@ -35,7 +40,7 @@ const RedefinirSenha = () => {
     try {
       console.log("Nova senha digitada:", novaSenha);
       console.log("Token usado:", token);
-      
+
       const response = await fetch(`https://sistema-vivaz-backend.onrender.com/redefinir-senha`, {
         method: "POST",
         headers: {
