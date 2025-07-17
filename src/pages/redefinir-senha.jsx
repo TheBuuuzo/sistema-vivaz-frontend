@@ -33,6 +33,9 @@ const RedefinirSenha = () => {
     }
 
     try {
+      console.log("Nova senha digitada:", novaSenha);
+      console.log("Token usado:", token);
+      
       const response = await fetch(`https://sistema-vivaz-backend.onrender.com/redefinir-senha`, {
         method: "POST",
         headers: {
