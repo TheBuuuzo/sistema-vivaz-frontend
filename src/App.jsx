@@ -14,6 +14,7 @@ function App() {
       <Routes>
         {/* Rota pública */}
         <Route path="/login" element={<Login />} />
+        <Route path="/redefinir-senha" element={<RedefinirSenha />} />
 
         {/* Rotas protegidas pelo PrivateRoute */}
         <Route element={<PrivateRoute />}>
@@ -22,7 +23,6 @@ function App() {
           <Route path="/cotacao/:cotacaoId" element={<CotacaoDetalhes />} />
           <Route path="/nova-cotacao" element={<NovaCotacao />} />
           <Route path="/cadastro" element={<CadastrarUsuario />} />
-          <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         </Route>
 
         {/* Redirecionamento padrão */}
