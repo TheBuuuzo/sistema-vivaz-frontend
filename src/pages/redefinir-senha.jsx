@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import fetchWithAuth from "../services/api";
 
@@ -9,8 +9,14 @@ const RedefinirSenha = () => {
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
-  const query = new URLSearchParams(useLocation().search);
-  const token = query.get("token");
+  const location = useLocation();
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const t = query.get("token");
+    setToken(t || "");
+  }, [location.search]);
 
   const handleSubmit = async () => {
     setErro("");
@@ -18,6 +24,11 @@ const RedefinirSenha = () => {
 
     if (novaSenha !== confirmacaoSenha) {
       setErro("As senhas não coincidem.");
+      return;
+    }
+  
+    if (!token) {
+      setErro("Token inválido ou expirado.");
       return;
     }
 
